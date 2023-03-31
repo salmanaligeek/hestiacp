@@ -69,7 +69,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 
 	echo "[ * ] Installing phpMyAdmin version v$pma_v..."
 	# Download latest phpmyadmin release
-	wget --quiet https://files.phpmyadmin.net/phpMyAdmin/$pma_v/phpMyAdmin-$pma_v-all-languages.tar.gz
+	wget -x -nc --quiet https://files.phpmyadmin.net/phpMyAdmin/$pma_v/phpMyAdmin-$pma_v-all-languages.tar.gz
 	# Unpack files
 	tar xzf phpMyAdmin-$pma_v-all-languages.tar.gz
 

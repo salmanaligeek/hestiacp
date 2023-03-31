@@ -88,7 +88,7 @@ help() {
 
 # Defining file download function
 download_file() {
-	wget $1 -q --show-progress --progress=bar:force
+	wget -x -nc $1 -q --show-progress --progress=bar:force
 }
 
 # Defining password-gen function
@@ -363,7 +363,7 @@ apt-get -y install $installer_dependencies >> $LOG
 check_result $? "Package installation failed, check log file for more details."
 
 # Check repository availability
-wget --quiet "https://$GPG/deb_signing.key" -O /dev/null
+wget -x -nc --quiet "https://$GPG/deb_signing.key" -O /dev/null
 check_result $? "Unable to connect to the Hestia APT repository"
 
 # Check installed packages
@@ -1631,7 +1631,7 @@ if [ "$mysql" = 'yes' ] || [ "$mysqlclassic" = 'yes' ]; then
 	echo "[ * ] Installing phpMyAdmin version v$pma_v..."
 
 	# Download latest phpmyadmin release
-	wget --quiet --retry-connrefused https://files.phpmyadmin.net/phpMyAdmin/$pma_v/phpMyAdmin-$pma_v-all-languages.tar.gz
+	wget -x -nc --quiet --retry-connrefused https://files.phpmyadmin.net/phpMyAdmin/$pma_v/phpMyAdmin-$pma_v-all-languages.tar.gz
 
 	# Unpack files
 	tar xzf phpMyAdmin-$pma_v-all-languages.tar.gz
@@ -1699,7 +1699,7 @@ if [ "$postgresql" = 'yes' ]; then
 	mkdir -p /etc/phppgadmin/
 	mkdir -p /usr/share/phppgadmin/
 
-	wget --retry-connrefused --quiet https://github.com/hestiacp/phppgadmin/releases/download/v$pga_v/phppgadmin-v$pga_v.tar.gz
+	wget -x -nc --retry-connrefused --quiet https://github.com/hestiacp/phppgadmin/releases/download/v$pga_v/phppgadmin-v$pga_v.tar.gz
 	tar xzf phppgadmin-v$pga_v.tar.gz -C /usr/share/phppgadmin/
 
 	cp -f $HESTIA_INSTALL_DIR/pga/config.inc.php /etc/phppgadmin/

@@ -97,7 +97,7 @@ check_wget_curl() {
 	# Check wget
 	if [ -e '/usr/bin/wget' ]; then
 		if [ -e '/etc/redhat-release' ]; then
-			wget -q https://raw.githubusercontent.com/hestiacp/hestiacp/release/install/hst-install-rhel.sh -O hst-install-rhel.sh
+			wget -x -nc -q https://raw.githubusercontent.com/hestiacp/hestiacp/release/install/hst-install-rhel.sh -O hst-install-rhel.sh
 			if [ "$?" -eq '0' ]; then
 				bash hst-install-rhel.sh $*
 				exit
@@ -106,7 +106,7 @@ check_wget_curl() {
 				exit 1
 			fi
 		else
-			wget -q https://raw.githubusercontent.com/hestiacp/hestiacp/release/install/hst-install-$type.sh -O hst-install-$type.sh
+			wget -x -nc -q https://raw.githubusercontent.com/hestiacp/hestiacp/release/install/hst-install-$type.sh -O hst-install-$type.sh
 			if [ "$?" -eq '0' ]; then
 				bash hst-install-$type.sh $*
 				exit

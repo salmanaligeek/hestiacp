@@ -39,7 +39,7 @@ if [ "$fm_error" != "yes" ]; then
 	mkdir -p "$FM_INSTALL_DIR"
 	cd "$FM_INSTALL_DIR"
 
-	[ ! -f "${FM_INSTALL_DIR}/${FM_FILE}" ] && wget "$FM_URL" --quiet -O "${FM_INSTALL_DIR}/${FM_FILE}.zip"
+	[ ! -f "${FM_INSTALL_DIR}/${FM_FILE}" ] && wget "$FM_URL" -k -nc --quiet -O "${FM_INSTALL_DIR}/${FM_FILE}.zip"
 
 	unzip -qq "${FM_INSTALL_DIR}/${FM_FILE}.zip"
 	mv --force ${FM_INSTALL_DIR}/filegator/* "${FM_INSTALL_DIR}"

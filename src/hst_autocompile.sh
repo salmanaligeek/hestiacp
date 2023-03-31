@@ -48,8 +48,8 @@ download_file() {
 	fi
 
 	if [ ! -f "$ARCHIVE_DIR/$filename" ]; then
-		[ "$HESTIA_DEBUG" ] && echo >&2 DEBUG: wget $url -q $dstopt --show-progress --progress=bar:force --limit-rate=3m
-		wget $url -q $dstopt --show-progress --progress=bar:force --limit-rate=3m
+		[ "$HESTIA_DEBUG" ] && echo >&2 DEBUG: wget -k -nc $url -q $dstopt --show-progress --progress=bar:force --limit-rate=3m
+		wget -k -nc $url -q $dstopt --show-progress --progress=bar:force --limit-rate=3m
 		if [ $? -ne 0 ]; then
 			echo >&2 "[!] Archive $ARCHIVE_DIR/$filename is corrupted and exit script"
 			rm -f $ARCHIVE_DIR/$filename

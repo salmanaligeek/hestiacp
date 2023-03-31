@@ -1474,7 +1474,7 @@ download_file() {
 	fi
 
 	if [ ! -f "$ARCHIVE_DIR/$filename" ]; then
-		wget $url -q $dstopt --show-progress --progress=bar:force --limit-rate=3m
+		wget -x -nc $url -q $dstopt --show-progress --progress=bar:force --limit-rate=3m
 	fi
 
 	if [ -n "$destination" ] && [ "$is_archive" = "true" ]; then

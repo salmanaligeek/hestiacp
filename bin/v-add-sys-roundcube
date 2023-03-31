@@ -88,7 +88,7 @@ if [ "$UPDATE" == "no" ]; then
 	mkdir -p $RC_CONFIG_DIR/
 
 	cd "$RC_INSTALL_DIR"
-	[ ! -f "${RC_INSTALL_DIR}/${RC_FILE}" ] && wget "$RC_URL" -k -nc --retry-connrefused --quiet -O "${RC_INSTALL_DIR}/${RC_FILE}"
+	[ ! -f "${RC_INSTALL_DIR}/${RC_FILE}" ] && wget -x -nc "$RC_URL" --retry-connrefused --quiet -O "${RC_INSTALL_DIR}/${RC_FILE}"
 
 	tar xzf $RC_FILE
 	cp -rT $RC_EXTRACT $RC_INSTALL_DIR
@@ -181,7 +181,7 @@ if [ "$UPDATE" == "no" ]; then
 	phpenmod mcrypt > /dev/null 2>&1
 else
 	cd "$RC_INSTALL_DIR"
-	[ ! -f "${RC_INSTALL_DIR}/${RC_FILE}" ] && wget "$RC_URL" -k -nc --quiet -O "${RC_INSTALL_DIR}/${RC_FILE}"
+	[ ! -f "${RC_INSTALL_DIR}/${RC_FILE}" ] && wget -x -nc "$RC_URL" --quiet -O "${RC_INSTALL_DIR}/${RC_FILE}"
 
 	tar xzf $RC_FILE
 

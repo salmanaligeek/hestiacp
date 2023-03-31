@@ -537,7 +537,7 @@ upgrade_b2_tool() {
 		else
 			echo "[ * ] Upgrading Backblaze CLI tool to version $b2_v..."
 			rm $b2cli
-			wget -O $b2cli $b2lnk > /dev/null 2>&1
+			wget -x -nc -O $b2cli $b2lnk > /dev/null 2>&1
 			chmod +x $b2cli > /dev/null 2>&1
 			if [ ! -f "$b2cli" ]; then
 				echo "Error: Binary download failed, b2 doesnt work as expected."
@@ -582,7 +582,7 @@ upgrade_phppgadmin() {
 			echo "[ * ] Upgrading phppgadmin to version $pga_v..."
 			[ -d /usr/share/phpmyadmin ] || mkdir -p /usr/share/phpmyadmin
 			# Download latest phpMyAdmin release
-			wget --retry-connrefused --quiet https://github.com/hestiacp/phppgadmin/releases/download/v$pga_v/phppgadmin-v$pga_v.tar.gz
+			wget -x -nc --retry-connrefused --quiet https://github.com/hestiacp/phppgadmin/releases/download/v$pga_v/phppgadmin-v$pga_v.tar.gz
 			tar xzf phppgadmin-v$pga_v.tar.gz -C /usr/share/phppgadmin/
 
 			if ! version_ge "$pga_release" "7.14.0"; then
@@ -614,7 +614,7 @@ upgrade_phpmyadmin() {
 			[ -d /usr/share/phpmyadmin ] || mkdir -p /usr/share/phpmyadmin
 
 			# Download latest phpMyAdmin release
-			wget --quiet https://files.phpmyadmin.net/phpMyAdmin/$pma_v/phpMyAdmin-$pma_v-all-languages.tar.gz
+			wget -x -nc --quiet https://files.phpmyadmin.net/phpMyAdmin/$pma_v/phpMyAdmin-$pma_v-all-languages.tar.gz
 
 			# Unpack files
 			tar xzf phpMyAdmin-$pma_v-all-languages.tar.gz
